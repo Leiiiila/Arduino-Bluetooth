@@ -1,0 +1,59 @@
+#include <dht.h>
+#include <LiquidCrystal.h>
+
+dht DHT11;
+#define DHT11PIN 8
+#define LEDPIN 6
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(DHT11PIN, OUTPUT);
+  pinMode(LEDPIN, OUTPUT);
+  lcd.begin(16, 2);
+  lcd.print("Hello");
+  delay(1000);
+}
+void loop
+{
+  void loop()
+{
+  int chk = DHT11.read11(DHT11PIN);
+  Serial.print("Tep: ");
+  Serial.print(DHT11.temperature, 1);
+  Serial.println("C");
+  Serial.print("Hum: ");
+  Serial.print(DHT11.humidity, 1);
+  Serial.println("%");
+  if (DHT11.humidity < 21)
+  £ûdigitalWrite(LEDPIN, HIGH)£»
+     Serial.println("Humidity too low.");
+  }else{
+    digitalWrite(LEDPIN, LOW);
+  }if (DHT11.temperature > 30.0)
+  {
+    digitalWrite(LEDPIN, HIGH);
+    Serial.println("Temperature too high.");
+  }
+  else
+  {
+    digitalWrite(LEDPIN, LOW);
+  }
+ lcd.setCursor(0, 0);
+  lcd.print("Tep: ");
+  lcd.print(DHT11.temperature, 2);
+  lcd.print("C");
+  delay(40);
+
+  lcd.setCursor(0, 1);
+  lcd.print("Hum: ");
+  lcd.print(DHT11.humidity, 2);
+  lcd.print("%");
+  delay(200);
+
+
+delay(1800);
+
+}
